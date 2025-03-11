@@ -22,7 +22,10 @@ Two commands are available to admins:
    - If valid, the initial message (shown after `/start`) updates to *new message*. Invalid inputs retain the current message and show an error.  
    - **Note**: The initial message is hardcoded. Restarting the script reverts it to the original version.  
 
-## Cancel Command  
-All users can use the `/cancel` command to exit the current question selection process.  
+## Cancel Command
+All users can use the `/cancel` command to exit the current question selection process.
+
+## Requirements and Hosting
+The only requirement for the script is the `python-telegram-bot` library, compatible with v21.10 To host, run `python3 telegram_bot.py`.
 
 For further inquiries or suggestions, reach out to msmirnov@nes.ru.
