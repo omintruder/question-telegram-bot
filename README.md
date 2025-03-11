@@ -12,12 +12,12 @@ Users are presented with three question types via buttons. The design intention 
 
 ## Admin Commands  
 Two commands are available to admins:  
-1. **`/send <user_id> *message*`**:  
+1. **`/send <user_id> message`**:  
    - The bot verifies admin eligibility. Unauthorized attempts trigger a notification to other admins.  
    - If valid, the message is sent to the specified user. Invalid inputs display a warning in the chat with an explanation.  
    - *Message* can span multiple words; quotation marks are optional.  
 
-2. **`/reset *new message*`**:  
+2. **`/reset new message`**:  
    - The bot checks admin eligibility again, notifying others if unauthorized.  
    - If valid, the initial message (shown after `/start`) updates to *new message*. Invalid inputs retain the current message and show an error.  
    - **Note**: The initial message is hardcoded. Restarting the script reverts it to the original version.  
