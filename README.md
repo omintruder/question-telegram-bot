@@ -25,4 +25,4 @@ Two commands are available to admins:
 ## Cancel Command  
 All users can use the `/cancel` command to exit the current question selection process.  
 
-For further inquiries or suggestions, reach out to [@kakoyvostorg](t.me/kakoyvostorg).
+For further inquiries or suggestions, reach out to t.me/kakoyvostorg.
