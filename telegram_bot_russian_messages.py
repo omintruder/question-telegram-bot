@@ -60,9 +60,13 @@ async def receive_anon(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def receive_admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     question = update.message.text
     user = update.message.from_user
-    profile_link = f'<a href="tg://user?id={user.id}">{user.first_name}</a>'
-    message_to_group = (f"Публичный вопрос от {profile_link} (<code>{user.id}</code>):\n{question}")
-    await context.bot.send_message(chat_id=GROUP_CHAT_ID, text=message_to_group, parse_mode=ParseMode.HTML)
+    user_id = update.effective_user.username
+    if user_id:
+        profile_link = f'<a href="t.me/{user_id}">{user.first_name}</a>'
+    else: 
+        profile_link = f'<a href="tg://user?id={user.id}">{user.first_name}</a>'
+    message_to_group = (f"Вопрос организатору от {profile_link} (<code>{user.id}</code>):\n{question}")
+    await context.bot.send_message(chat_id=GROUP_CHAT_ID, text=message_to_group, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     await update.message.reply_text("Ваш вопрос организатору записан. Спасибо!\nЧтобы задать новый вопрос, нажмите /start.")
     return ConversationHandler.END
 
@@ -76,9 +80,13 @@ async def receive_public(update: Update, context: ContextTypes.DEFAULT_TYPE):
     question = update.message.text
     user = update.message.from_user
     name = context.user_data.get('name', 'Unknown')
-    profile_link = f'<a href="tg://user?id={user.id}">{user.first_name}</a>'
+    user_id = update.effective_user.username
+    if user_id:
+        profile_link = f'<a href="t.me/{user_id}">{user.first_name}</a>'
+    else: 
+        profile_link = f'<a href="tg://user?id={user.id}">{user.first_name}</a>'
     message_to_group = (f"<b>Публичный</b> вопрос от {profile_link} (<code>{user.id}</code>):\n{question}\n(c) {name}")
-    await context.bot.send_message(chat_id=GROUP_CHAT_ID, text=message_to_group, parse_mode=ParseMode.HTML)
+    await context.bot.send_message(chat_id=GROUP_CHAT_ID, text=message_to_group, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     await update.message.reply_text("Ваш вопрос записан. Спасибо!\nЧтобы задать новый вопрос, нажмите /start.")
     return ConversationHandler.END
 
